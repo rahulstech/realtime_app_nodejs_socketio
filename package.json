@@ -1,0 +1,34 @@
+{
+  "name": "realtime_app",
+  "version": "1.0.0",
+  "description": "simple relatime chat nodejs app built with socket.io for websocket",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -e js,jade,css ./app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rahulstech/realtime_app_nodejs_socketio.git"
+  },
+  "keywords": [
+    "relatimechatapp",
+    "chatapp",
+    "nodejs",
+    "socket.io",
+    "express",
+    "realtime"
+  ],
+  "author": "Rahul Bagchi",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/rahulstech/realtime_app_nodejs_socketio/issues"
+  },
+  "homepage": "https://github.com/rahulstech/realtime_app_nodejs_socketio#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "jade": "^0.29.0",
+    "nodemon": "^2.0.19",
+    "socket.io": "^4.5.1"
+  }
+}

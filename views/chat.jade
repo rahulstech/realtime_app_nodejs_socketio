@@ -1,0 +1,47 @@
+extends layout
+block title
+    title #{uname} | Chat
+block prescript
+    script(src="/lib/socket.io/client-dist/socket.io.min.js") 
+    script(src="https://code.jquery.com/jquery-3.6.1.min.js",
+     integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=",
+     crossorigin="anonymous")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/latest/js.cookie.min.js")
+block main 
+    .container-m
+        nav.navbar.bg-light
+            .container-fluid
+                span.navbar-brand #{uname}
+                button.navbar-toggler(type="button", data-bs-toggle="collapse",
+                data-bs-target="#chatnavcollapse", aria-controls="chatnavcollapse",
+                aria-expanded="false", aria-label="Toggle navigation")
+                    span.navbar-toggler-icon
+                .collapse.navbar-collapse#chatnavcollapse
+                    .navbar-nav
+                        a.nav-link(href="/createroom") Create Room
+                        a.nav-link(href="/logout") Log Out
+
+        .container-fluid.mt-2
+            .row.g-3
+                .col-4
+                    .list-group#myrooms 
+                        each r in rooms 
+                            a.list-group-item.list-group-item-action(href="/chat/#{r}") #{r}
+
+                .col-8.overflow-auto.position-relative#section_chat(style="height: 88vh")
+                    .list-group#section_chat_messages(style="margin-bottom: 10vh")
+                        if room
+                            each chat in room.chats
+                                .list-group-item 
+                                    h4.mb-2 #{uname == chat.send ? "You" : chat.sender}
+                                    p #{chat.message}
+                    .position-fixed.bottom-0(style="width: 64%") 
+                        form.w-100#send_message(action="", method="post", style="width: 100%")
+                            .input-group.mb-3  
+                                input.form-control#in_message(type="text", name="in_message", placeholder="Enter Text Message...", autocomplete="off")
+                                input.btn.btn-outline-secondary(type="submit", value="Send")
+                            
+
+
+block postscript
+    script(src="/scripts/script.js") 

@@ -1,0 +1,27 @@
+extends layout 
+block title 
+    title Create Room
+block main 
+    .container-m.mb-3
+        .navbar.bg-light
+            .container-fluid
+                a.navbar-brand(href='/chat') #{uname}
+
+    .container
+        form(action="/createroom", method="POST", enctype="application/x-www-form-urlencoded")
+            .form-floating.mb-3
+                input.form-control#roomname(type="text", name="room_name", required)
+                label(for="roomname") Room Name 
+            .container-fluid
+                .h3.text-center Choose Participants
+                ul.list-group.mb-3 
+                    each u in users
+                        li.list-group-item 
+                            input.form-check-input.me-1(type='checkbox', 
+                            value="#{u}", name='participants[]'
+                            id='#{u}')
+                            label.form-check-label.stretched-link(for='#{u}') #{u}
+                .text-center
+                    input.btn.btn-primary(type="submit", value="Create")
+
+                

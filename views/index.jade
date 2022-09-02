@@ -1,0 +1,12 @@
+extends layout
+block title
+    title Fancy Chat
+block main
+    .container.justify-content-around.m-5
+        form(action="/", method="POST", enctype="application/x-www-form-urlencoded")
+                .form-floating.mb-3
+                    input.form-control#uname(type="text", name="uname", required, autocomplete="off")
+                    label(for="uname") UserName 
+                .container.text-center
+                    input.btn.btn-primary(type="submit",value="Log In")
+
